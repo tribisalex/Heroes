@@ -17,6 +17,30 @@
       "name": "Fktyrchlf",
       "description": "Flkjlkjh",
       "element": "water"
+    },
+    {
+      "id": "22eb74bc-b054-4a4a-b784-ce5fd0bb9b63",
+      "name": "Самый главный герой этого дня!",
+      "description": "Все, абсолютно все!!!",
+      "element": "earth"
+    },
+    {
+      "id": "976ff448-4538-4fa6-97f7-c3147c883e1e",
+      "name": "Ветряной",
+      "description": "Управляет ветром",
+      "element": "wind"
+    },
+    {
+      "id": "d48ca963-44d3-4a6a-ab1e-11fd2741531f",
+      "name": "lkjhlkj",
+      "description": "lkjhlkjhlkjh",
+      "element": "wind"
+    },
+    {
+      "id": "f767b536-d6ea-4fe4-ba79-e44310e42aeb",
+      "name": "kjhljhjhkjk",
+      "description": "",
+      "element": "water"
     }
   ],
   "filters": [

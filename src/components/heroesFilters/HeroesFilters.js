@@ -1,25 +1,20 @@
-// Задача для этого компонента:
-// Фильтры должны формироваться на основании загруженных данных
-// Фильтры должны отображать только нужных героев при выборе
-// Активный фильтр имеет класс active
-
 import {useDispatch, useSelector} from "react-redux";
 import {useHttp} from "../../hooks/http.hook";
 import React, {useEffect} from "react";
-import {activeFilterChanged, filtersFetched, filtersFetchingError} from "../../actions";
+import {activeFilterChanged, filtersFetched, filtersFetching, filtersFetchingError} from "../../actions";
 import Spinner from "../spinner/Spinner";
 import classNames from "classnames";
 
 const HeroesFilters = () => {
-  const { filters, activeFilter, filtersLoadingStatus} = useSelector((state) => state);
+  const {filters, activeFilter, filtersLoadingStatus} = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { request } = useHttp();
+  const {request} = useHttp();
 
   useEffect(() => {
-    dispatch(filtersFetched());
+    dispatch(filtersFetching());
     request('http://localhost:3001/filters')
     .then((data) => dispatch(filtersFetched(data)))
-    .catch(dispatch(filtersFetchingError()));
+    .catch(() => dispatch(filtersFetchingError()));
   }, []);
 
   if (filtersLoadingStatus === "loading") {
@@ -33,18 +28,21 @@ const HeroesFilters = () => {
       return <h5 className="text-center mt-5">Фильтры не найдены</h5>
     }
 
-    return arr.map(({ name, className, label }) => {
+    return arr.map(({name, className, label}) => {
       const btnClass = classNames('btn', className, {
         active: name === activeFilter,
       });
 
-      return <button
-        key={name}
-        id={name}
-        className={btnClass}
-        onClick={() => dispatch(activeFilterChanged(name))}
-      >{label}
-      </button>
+      return (
+        <button
+          key={name}
+          id={name}
+          className={btnClass}
+          onClick={() => dispatch(activeFilterChanged(name))}
+        >
+          {label}
+        </button>
+      )
     });
   };
 

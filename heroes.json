@@ -5,6 +5,18 @@
       "name": "Первый герой",
       "description": "Первый герой в рейтинге!",
       "element": "fire"
+    },
+    {
+      "id": 3,
+      "name": "Морской герой",
+      "description": "Как аквамен, но не из DC",
+      "element": "water"
+    },
+    {
+      "id": "8569aff9-843f-4042-b33b-f9b5a9b46ebc",
+      "name": "Fktyrchlf",
+      "description": "Flkjlkjh",
+      "element": "water"
     }
   ],
   "filters": [

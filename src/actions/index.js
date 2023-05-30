@@ -4,6 +4,14 @@ export const heroesFetching = () => {
     };
 };
 
+
+export const activeFilterChanged = (filter) => {
+    return {
+        type: 'ACTIVE_FILTER_CHANGED',
+        payload: filter,
+    };
+};
+
 export const heroesFetched = (heroes) => {
     return {
         type: 'HEROES_FETCHED',
@@ -32,6 +40,12 @@ export const heroesFetchingError = () => {
     };
 };
 
+export const filtersFetching = () => {
+    return {
+        type: 'FILTERS_FETCHING',
+    };
+};
+
 export const filtersFetched = (filters) => {
     return {
         type: 'FILTERS_FETCHED',
@@ -44,14 +58,3 @@ export const filtersFetchingError = () => {
         type: 'FILTERS_FETCHING_ERROR'
     };
 };
-
-export const activeFilterChanged = (filter) => {
-    return {
-        type: 'ACTIVE_FILTER_CHANGED',
-        payload: filter,
-    };
-};
-
-
-
-

@@ -1,40 +1,34 @@
+import {createReducer} from "@reduxjs/toolkit";
+import {activeFilterChanged, filtersFetched, filtersFetching, filtersFetchingError} from "../actions";
+
 const initialState = {
   filtersLoadingStatus: 'idle',
-  filters: [], //heroes.json
+  filters: [],
   activeFilter: 'all',
 };
 
-const filters = (state = initialState, action) => {
-  switch (action.type) {
+const filters = createReducer(
+  initialState,
+  {
+    [filtersFetching]: (state) => {
+      state.filtersLoadingStatus = 'loading';
+    },
 
-    case 'FILTERS_FETCHING':
-      return {
-        ...state,
-        filtersLoadingStatus: 'loading',
-      };
+    [filtersFetched]: (state, action) => {
+      state.filters = action.payload;
+      state.filtersLoadingStatus = 'idle';
+    },
 
-    case 'FILTERS_FETCHED':
-      return {
-        ...state,
-        filters: action.payload,
-        filtersLoadingStatus: 'idle',
-      };
+    [filtersFetchingError]: (state) => {
+      state.filtersLoadingStatus = 'error';
+    },
 
-    case 'FILTERS_FETCHING_ERROR':
-      return {
-        ...state,
-        filtersLoadingStatus: 'error',
-      };
-
-    case 'ACTIVE_FILTER_CHANGED':
-      return {
-        ...state,
-        activeFilter: action.payload,
-      };
-
-    default:
-      return state;
-  }
-};
+    [activeFilterChanged]: (state, action) => {
+      state.activeFilter = action.payload;
+    },
+  },
+  [],
+  (state) => state
+);
 
 export default filters;
